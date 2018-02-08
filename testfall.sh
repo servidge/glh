@@ -1,8 +1,8 @@
 #!/bin/bash
 # 
-# Testfall für Loghelper für Syslogmeldungen vom GenuaALG
-# trial and error oder Stochern im Trüben 
-# Logs bestehen Blöcken zu je 8 Stellen in hex bsp: 08080808 oder deadbeef
+# Testfall fÃ¼r Loghelper fÃ¼r Syslogmeldungen vom GenuaALG
+# trial and error oder Stochern im TrÃ¼ben 
+# Logs bestehen BlÃ¶cken zu je 8 Stellen in hex bsp: 08080808 oder deadbeef
 #
 # Teil von https://github.com/servidge/glh
 # 
