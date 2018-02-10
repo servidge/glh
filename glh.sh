@@ -29,6 +29,7 @@ while read ZEILE
 do
 	if [[ $ZEILE = *"ipfw_log"* ]]; then
 		#echo $ZEILE
+		ZEIT=`echo $ZEILE | cut -d":" -f1-3`
 		counter=1
 		for SPALTE in $ZEILE
 			do
@@ -81,7 +82,7 @@ do
 	fi
 PROTOSPAL=0
 TYPESPAL=0
-[ "$OUTPUT" ] && echo ipfw_log" "$OUTPUT
+[ "$OUTPUT" ] && echo $ZEIT" "ipfw_log" "$OUTPUT
 OUTPUT=""
 done < $FILE
 
