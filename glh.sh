@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 # glh - genua log helper oder genua little helper 
 # Shell Script zum Arbeiten mit Syslogs von Genugate Firewalls. 
 #
@@ -27,7 +27,7 @@ echo "SPALTEZIEL: $SPALTEZIEL"
 
 while read ZEILE 
 do
-	if [[ $ZEILE = *"ipfw_log"* ]]; then
+	if [[ $ZEILE = *"ipfw_log"* ]] && [[ $ZEILE != *"messages dropped"* ]]; then
 		#echo $ZEILE
 		ZEIT=`echo $ZEILE | cut -d":" -f1-3`
 		counter=1
@@ -79,6 +79,24 @@ do
 			fi
 			((counter++))
 		done
+	elif [[ $ZEILE = *"tcp_probe"* ]] && [[ $ZEILE != *"messages dropped"* ]] ; then
+		#echo $ZEILE
+		ZEIT=`echo $ZEILE | cut -d":" -f1-3`
+		counter=1
+		for SPALTE in $ZEILE
+			do
+			
+			((counter++))
+		done
+	elif [[ $ZEILE = *"udp_probe"* ]] && [[ $ZEILE != *"messages dropped"* ]] ; then
+		#echo $ZEILE
+		ZEIT=`echo $ZEILE | cut -d":" -f1-3`
+		counter=1
+		for SPALTE in $ZEILE
+			do
+			
+			((counter++))
+			done
 	fi
 PROTOSPAL=0
 TYPESPAL=0
