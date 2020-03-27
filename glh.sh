@@ -27,7 +27,7 @@ echo "SPALTEZIEL: $SPALTEZIEL"
 
 while read ZEILE 
 do
-	if [[ $ZEILE = *"ipfw_log"* ]] && [[ $ZEILE != *"messages dropped"* ]]; then
+	if [[ $ZEILE == *"ipfw_log"* ]] && [[ $ZEILE != *"messages dropped"* ]]; then
 		#echo $ZEILE
 		ZEIT=`echo $ZEILE | cut -d":" -f1-3`
 		counter=1
@@ -44,7 +44,7 @@ do
 						ausgabe=$((0x${SPALTE:0:2})).$((0x${SPALTE:2:2})).$((0x${SPALTE:4:2})).$((0x${SPALTE:6:2}))" "$((${SPALTE:9:$spaltlen-10}))
 						OUTPUT=$OUTPUT" "$ausgabe 
 				fi
-				if [[ $SPALTE = "proto" ]]; then
+				if [[ $SPALTE == "proto" ]]; then
 					PROTOSPAL=$((counter+1))
 				fi
 				if [[ ${counter} -eq $PROTOSPAL ]]; then
@@ -62,7 +62,7 @@ do
 						eOUTPUT="UNBEKANNTESproto "$OUTPUT
 					fi
 				fi
-				if [[ $SPALTE = "type" ]]; then
+				if [[ $SPALTE == "type" ]]; then
 				        TYPESPAL=$((counter+1))
 				fi 
 				if [[ ${counter} -eq $TYPESPAL ]]; then
@@ -79,7 +79,7 @@ do
 			fi
 			((counter++))
 		done
-	elif [[ $ZEILE = *"tcp_probe"* ]] && [[ $ZEILE != *"messages dropped"* ]] ; then
+	elif [[ $ZEILE == *"tcp_probe"* ]] && [[ $ZEILE != *"messages dropped"* ]] ; then
 		#echo $ZEILE
 		ZEIT=`echo $ZEILE | cut -d":" -f1-3`
 		counter=1
@@ -88,7 +88,7 @@ do
 			
 			((counter++))
 		done
-	elif [[ $ZEILE = *"udp_probe"* ]] && [[ $ZEILE != *"messages dropped"* ]] ; then
+	elif [[ $ZEILE == *"udp_probe"* ]] && [[ $ZEILE != *"messages dropped"* ]] ; then
 		#echo $ZEILE
 		ZEIT=`echo $ZEILE | cut -d":" -f1-3`
 		counter=1
